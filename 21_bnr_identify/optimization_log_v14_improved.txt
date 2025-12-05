@@ -1,0 +1,134 @@
+================================================================
+   IMPROVED OPTIMIZATION - VERSION 14 IMPROVED
+   Valid for 0.2 < r <= 4.0 with strong constraints
+   Started: 17-Nov-2025 16:25:50
+================================================================
+
+--- DATA LOADING ---
+Data dimensions: 38 x 99 = 3762 points
+r range: 0.30 to 4.00 (38 points) - RESTRICTED
+n range: 2 to 100 (99 points)
+
+--- CONTROL POINTS ---
+Number: 26
+Range: 0.25 to 4.00
+
+--- BOUNDARY VALUE ESTIMATION ---
+Boundary values at r=4.0:
+  P_boundary = 0.793474
+  A_boundary = -2.000000
+  B_boundary = 1.542889
+  Q_boundary = 0.530316
+  C_boundary = -1.297722
+  A/C ratio = 1.541162
+
+--- PHASE 1: IMPROVED INITIALIZATION ---
+Initialization complete.
+Monotonicity enforced in initialization.
+Boundary values used to guide high-r initialization.
+
+--- ADAPTIVE WEIGHTING ---
+Adaptive weighting applied:
+  Critical region: 4.0
+  Transition: 5.0
+  Low-n multiplier: 2.0
+
+--- ADAPTIVE BOUNDS ---
+Adaptive bounds: tight near r=4, wider at low r
+
+--- GLOBAL OPTIMIZATION ---
+Optimization settings:
+  Population: 8000
+  Max iterations: 6000
+  Tolerance: 1e-09
+  Parameters: 130
+  Constraints: STRONG
+
+Optimization completed:
+  Time: 2119.3 minutes
+  Iterations: 48000000
+  Convergence: -2
+  Final cost: 1.759136e-01
+
+--- FIT QUALITY ---
+RMSE: 0.001696
+R2: 0.999702
+
+Results saved to: Results_v14_improved.mat
+
+--- VALIDATION CRITERIA ---
+
+P monotonicity: 100.0% ... PASS
+Q monotonicity: 100.0% ... PASS
+
+Boundary matching: P=0.04%, Q=0.02%, A=0.01% ... PASS
+
+Smoothness: 0.0897 ... PASS
+
+A/C near boundary: [1.537, 1.541] vs 1.541 ... PASS
+
+RMSE: 0.001696 ... PASS
+
+VALIDATION: 6/6 CRITERIA PASSED
+
+--- DETAILED PARAMETER ANALYSIS ---
+
+PARAMETERS AT KEY POINTS:
+   r       P        Q        A        B        C       P/Q      A/C
+-----------------------------------------------------------------------
+  0.25   1.1786   0.9797  -0.7000   0.8001  -0.9262    1.203    0.756
+  0.50   1.1699   0.9662  -0.7101   0.8001  -0.9206    1.211    0.771
+  1.00   1.0959   0.8852  -0.7868   0.8098  -0.9183    1.238    0.857
+  1.40   1.0684   0.8407  -0.8536   0.8448  -0.9102    1.271    0.938
+  2.00   1.0372   0.7725  -1.0065   0.9584  -0.8985    1.343    1.120
+  2.40   1.0150   0.7278  -1.1422   1.0694  -0.9055    1.395    1.261
+  3.00   0.9716   0.6664  -1.3809   1.2573  -0.9575    1.458    1.442
+  3.40   0.9331   0.6293  -1.5546   1.3691  -1.0255    1.483    1.516
+  3.80   0.8523   0.5703  -1.8210   1.4822  -1.1817    1.494    1.541
+  4.00   0.7938   0.5304  -1.9998   1.5434  -1.2976    1.497    1.541
+
+WORST FIT POINTS (Top 10):
+  r      n     Actual    Model     Error     RelErr(%)
+  0.30    3    1.3374    1.3234   -0.01396     1.04
+  0.40    3    1.3380    1.3245   -0.01346     1.01
+  0.30    4    1.3146    1.3013   -0.01334     1.01
+  0.40    4    1.3157    1.3029   -0.01286     0.98
+  0.50    3    1.3389    1.3267   -0.01215     0.91
+  0.60    3    1.3399    1.3279   -0.01201     0.90
+  0.60    4    1.3192    1.3072   -0.01200     0.91
+  0.50    4    1.3173    1.3054   -0.01190     0.90
+  0.70    4    1.3215    1.3103   -0.01119     0.85
+  0.70    3    1.3413    1.3302   -0.01106     0.82
+
+--- COMPARISON WITH TARGETS ---
+
+  Monotonicity P: 100.0% (target >90%)
+  Monotonicity Q: 100.0% (target >90%)
+  Boundary match: 0.0%, 0.0%, 0.0% (target <10%)
+  Smoothness: 0.0897 (target <0.3)
+  A/C stability: +/-0.004 (target +/-0.15)
+  RMSE: 0.001696 (target <0.012)
+
+================================================================
+FINAL STATUS: EXCELLENT - ALL CRITERIA MET
+QUALITY: EXCELLENT
+VALID RANGE: 0.2 < r <= 4.0
+CONSTRAINTS: STRONG
+================================================================
+
+--- SUMMARY ---
+Criteria passed: 6/6
+Fit quality: RMSE=0.001696, R2=0.999702
+Improvements over original V14:
+  - Strong monotonicity constraint (weight=500)
+  - Boundary consistency constraint (weight=300)
+  - A/C ratio guidance (weight=200)
+  - Enhanced smoothness (weight=50-100)
+  - Physics-based initialization
+  - Adaptive bounds using boundary values
+  - Increased control points (26 vs 19)
+  - Increased optimization budget (6000 pop, 4000 iter)
+Total runtime: 2119.3 minutes
+================================================================
+Completed: 19-Nov-2025 03:45:23
+================================================================
