@@ -21,6 +21,8 @@ function s = std_opti(x)
 %   OUTPUTS:
 %   s - Optimized estimate of standard deviation.
 %
+%   NOTE: OCTAVE and MATLAB comaptible
+%
 
   n_ = [ ...
   2, 3, 4, 5, 6, 7, 8, 9, 10, 11, ...
@@ -75,5 +77,6 @@ function s = std_opti(x)
   end
 
 end
+
 
 
