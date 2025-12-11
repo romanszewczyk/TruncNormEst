@@ -27,6 +27,7 @@ function s = std_bnr_opti(x,r)
 %
 %   NOTE: OCTAVE compatible
 %         MATLAB compatible, but Statistics and Machine Learning Toolbox required
+%         If you don't have Statistics and Machine Learning Toolbox, use patch indicated in the code
 %
 
 nn = [ ...
@@ -985,21 +986,6 @@ bnr_std = [ ...
 0.00036, 0.00061, 0.00057, 0.00073, 0.00077, 0.00102, 0.00099, 0.00097; ...
 ];
 
-%figure(1)
-%surf(nn,rr,bnr);
-%xlabel('\it{n}');
-%ylabel('\it{r}');
-%zlabel('\it{b(n,r)}');
-%
-%
-%figure(2)
-%surf(nn,rr,bnr_std);
-%xlabel('\it{n}');
-%ylabel('\it{r}');
-%zlabel('\it{s(b(n,r))}');
-%
-%return
-
   % If x is a vector, treat it as n x 1
   if isvector(x)
     x = x(:);
@@ -1022,9 +1008,21 @@ bnr_std = [ ...
   Phi_r = normcdf(r);
   ar = 1 - 2*r*phi_r/(2*Phi_r - 1);
 
+  %  ----- If you dont have MATLAB - Statistics and Machine Learning Toolbox, use this patch and commnet block above
+  %
+  % Adjust a_r (Using core math functions for maximum compatibility)
+  % phi_r = (1 / sqrt(2*pi)) * exp(-0.5 * r^2)
+  % phi_r = 0.398942280401433 * exp(-0.5 * r^2);
+  %
+  % Phi_r = 0.5 * (1 + erf(r / sqrt(2)))
+  % Phi_r = 0.5 * (1 + erf(r * 0.707106781186547));
+  %
+  %ar = 1 - 2*r*phi_r/(2*Phi_r - 1);
+  %
+  % ------ End of the patch --------
+
   % Adjusted variance and std
   s2 = sum(xc.^2, 1) / ((n - bn).*ar);
-
 
   s = sqrt(s2);
 
@@ -1033,6 +1031,7 @@ bnr_std = [ ...
   end
 
 end
+
 
 
 
