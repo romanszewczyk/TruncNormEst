@@ -1,10 +1,29 @@
 function s = std_bnr_opti(x,r)
-
-% r must be the scalar
-
-%clear all
-%clc
-
+%STD_BNR_OPTI Optimized standard deviation estimator for truncated normal distributions.
+%   S = STD_BNR_OPTI(X, R) calculates the estimated standard deviation of 
+%   the underlying (untruncated) normal distribution based on samples X 
+%   that have been symmetrically truncated.
+%
+%   SYNTAX:
+%   s = std_bnr_opti(x, r)
+%
+%   INPUTS:
+%   x - Input data vector or matrix (truncated normal samples).
+%   r - The scalar truncation parameter (symmetric boundaries). 
+%       The data is assumed to be truncated at +/- r*sigma.
+%
+%   OUTPUTS:
+%   s - Estimated standard deviation of the untruncated parent distribution.
+%
+%   ALGORITHM:
+%   The function applies two corrections to the sum of squared errors:
+%   1. A truncation variance correction factor (ar), derived from the 
+%      properties of the truncated normal distribution PDF/CDF.
+%   2. A sample-size correction factor (bn), interpolated from an internal 
+%      lookup table based on the sample size (n) and the truncation 
+%      parameter (r).
+%
+%   The formula is: s = sqrt( sum((x-mu)^2) / ((n - bn) * ar) )
 
 nn = [ ...
 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, ...
@@ -1010,4 +1029,5 @@ bnr_std = [ ...
   end
 
 end
+
 
