@@ -24,6 +24,10 @@ function s = std_bnr_opti(x,r)
 %      parameter (r).
 %
 %   The formula is: s = sqrt( sum((x-mu)^2) / ((n - bn) * ar) )
+%
+%   NOTE: OCTAVE compatible
+%         MATLAB compatible, but Statistics and Machine Learning Toolbox required
+%
 
 nn = [ ...
 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, ...
@@ -1029,5 +1033,6 @@ bnr_std = [ ...
   end
 
 end
+
 
 
