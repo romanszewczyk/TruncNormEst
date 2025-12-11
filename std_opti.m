@@ -66,7 +66,7 @@ function s = std_opti(x)
   xc = x - ones(n, 1) * mu;
 
   % Interpolated correction factor for this n (scalar)
-  bn = interp1(n_, bn_mean, n, "nearest");
+  bn = interp1(n_, bn_mean, n, 'nearest');
 
   % Adjusted variance and std
   s2 = sum(xc.^2, 1) / (n - bn);
@@ -77,6 +77,7 @@ function s = std_opti(x)
   end
 
 end
+
 
 
 
