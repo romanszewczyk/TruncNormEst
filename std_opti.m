@@ -1,5 +1,30 @@
 function s = std_opti(x)
+%STD_OPTI Optimized standard deviation estimator for normal distributions.
+%   S = STD_OPTI(X) calculates an optimized estimate of the standard 
+%   deviation for the data in X.
+%
+%   If X is a vector, S is the standard deviation of the elements of X.
+%   If X is a matrix, S is a row vector containing the standard deviation 
+%   of each column.
+%
+%   ALGORITHM:
+%   Standard Sample Variance is typically calculated as sum((x-mu)^2)/(n-1).
+%   However, estimating Standard Deviation (sqrt of variance) introduces 
+%   bias. This function uses a lookup table of optimized correction factors 
+%   (bn) dependent on the sample size (n).
+%
+%   The formula used is: s = sqrt( sum((x-mu)^2) / (n - bn) )
+%
+%   INPUTS:
+%   x - Input data (vector or matrix).
+%
+%   OUTPUTS:
+%   s - Optimized estimate of standard deviation.
+%
 
+  n_ = [ ...
+  2, 3, 4, 5, 6, 7, 8, 9, 10, 11, ...
+  % ... rest of your code ...
   n_ = [ ...
   2, 3, 4, 5, 6, 7, 8, 9, 10, 11, ...
   12, 13, 14, 15, 16, 17, 18, 19, 20, 21, ...
@@ -50,4 +75,5 @@ function s = std_opti(x)
   end
 
 end
+
 
