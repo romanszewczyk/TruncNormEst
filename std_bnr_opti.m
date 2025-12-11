@@ -1001,7 +1001,7 @@ bnr_std = [ ...
   xc = x - ones(n, 1) * mu;
 
   % Interpolated correction factor for this n (scalar)
-  bn = interp2(nn, rr, bnr, n, r, "linear");
+  bn = interp2(nn, rr, bnr, n, r, 'linear');
 
   % Adjust a_r
   phi_r = normpdf(r);
@@ -1031,6 +1031,7 @@ bnr_std = [ ...
   end
 
 end
+
 
 
 
